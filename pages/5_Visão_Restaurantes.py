@@ -136,8 +136,12 @@ def rest_mais_avaliados(df):
     return fig
 
 def top_preco_medio_dois_rest(df):
-    cols = ['restaurant_name','average_cost_for_two_brl']
-    df_aux = df[cols].groupby(['restaurant_name']).mean().sort_values('average_cost_for_two_brl', ascending=False).reset_index().head(5)
+    cols = ['restaurant_name','country_name','city','average_cost_for_two_brl']
+    
+    df_aux = df[cols].groupby(['restaurant_name',
+                               'country_name',
+                               'city']).mean('average_cost_for_two_brl').sort_values('average_cost_for_two_brl', 
+                                                                                     ascending=False).reset_index().head(5)
     df_aux['average_cost_for_two_brl'] = df_aux['average_cost_for_two_brl'].round(2)
     fig = px.bar(df_aux, 
                  x='restaurant_name',
@@ -145,19 +149,25 @@ def top_preco_medio_dois_rest(df):
                  labels=dict(average_cost_for_two_brl='Preço médio, em reais', 
                              restaurant_name='Restaurantes'), 
                  text_auto=True,
+                 custom_data=np.stack((df_aux['city'], df_aux['country_name'])),
                  height=500)
     fig.update_traces(textposition='outside',
                       hovertemplate=
                       '<b>%{x}</b>'+
-                      '<br>Preço médio: R$ %{y}<br>')
+                      '<br>Preço médio: R$ %{y}'+
+                      '<br>Cidade: %{customdata[0]}'+
+                      '<br>País: %{customdata[1]}')
     fig.update_xaxes(tickangle=-45)
 
     return fig
 
 def bottom_preco_medio_dois_rest(df):
-    cols = ['restaurant_name','average_cost_for_two_brl']
+    cols = ['restaurant_name','country_name','city','average_cost_for_two_brl']
 
-    df_aux = df[cols].groupby(['restaurant_name']).mean().sort_values('average_cost_for_two_brl', ascending=True).reset_index()
+    df_aux = df[cols].groupby(['restaurant_name',
+                               'country_name',
+                               'city']).mean('average_cost_for_two_brl').sort_values('average_cost_for_two_brl', 
+                                                                                     ascending=True).reset_index()
     df_aux = df_aux[df_aux['average_cost_for_two_brl'] != 0].reset_index(drop=True).head(5)
     df_aux['average_cost_for_two_brl'] = df_aux['average_cost_for_two_brl'].round(2)
     fig = px.bar(df_aux, 
@@ -166,11 +176,14 @@ def bottom_preco_medio_dois_rest(df):
                  labels=dict(average_cost_for_two_brl='Preço médio, em reais', 
                              restaurant_name='Restaurantes'), 
                  text_auto=True,
-                 height=540)
+                 custom_data=np.stack((df_aux['city'], df_aux['country_name'])),
+                 height=525)
     fig.update_traces(textposition='outside',
                       hovertemplate=
                       '<b>%{x}</b>'+
-                      '<br>Preço médio: R$ %{y}<br>')
+                      '<br>Preço médio: R$ %{y}'+
+                      '<br>Cidade: %{customdata[0]}'+
+                      '<br>País: %{customdata[1]}')
     fig.update_xaxes(tickangle=-45)
 
     return fig
