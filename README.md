@@ -1,4 +1,4 @@
-# Zomato - Dashboard e Análise de Dados
+# Zomato - Dashboard e Análise de Dados 🍅
 
 # 1. O problema de negócio
 
