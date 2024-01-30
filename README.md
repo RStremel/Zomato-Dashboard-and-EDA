@@ -1,5 +1,9 @@
 # Zomato - Dashboard e Análise de Dados 🍅
 
+Notebook com análise exploratória dos dados (EDA): https://github.com/RStremel/zomato_dashboard/blob/main/files/notebooks/projeto_zomato_analysis.ipynb
+
+Dashboard construído no Streamlit: https://zomatodashboard.streamlit.app/
+
 # 1. O problema de negócio
 
 A Zomato é um serviço de busca de restaurantes para quem quer sair para jantar, buscar comida ou pedir em casa, e atua em países como Índia, Brasil, Estados Unidos e diversos outros ao redor do mundo.
@@ -58,3 +62,22 @@ O conteúdo de cada página é o seguinte:
 
 - Os 10 Restaurantes com Mais Avaliações
 - Os Restaurantes com os Maiores e Menores Preços Médios para Dois, em Reais
+
+# 3. Insights de interesse
+
+1. Há uma relação positiva entre aceitar pedidos online e número de avaliações registradas.
+2. A relação entre fazer reservas e valor médio para duas pessoas é pequena.
+3. Os restaurantes do tipo de culinária japonesa dos Estados Unidos da América possuem um valor médio de prato para duas pessoas maior que as churrascarias americanas.
+
+# 4. O produto final do projeto
+
+Notebook com as análises gerais e pontuais pode ser acessado através desse link: https://github.com/RStremel/zomato_dashboard/blob/main/files/notebooks/projeto_zomato_analysis.ipynb
+
+Dashboard online, interativo e hospedado em cloud pode ser acessado através desse link: https://zomatodashboard.streamlit.app/
+
+# 5. Os próximos passos
+
+1. Conectar o painel à API do Zomato ou do Kaggle para atualização automática semanal.
+2. Criar um modelo para previsão de notas de restaurantes.
+3. Criar um sistema de recomendação para clientes.
+4. Desenvolver novas features para melhor entendimento dos dados.
